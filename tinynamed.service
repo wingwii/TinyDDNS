@@ -1,0 +1,15 @@
+[Unit]
+Description=Tiny Dynamic DNS Server
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+Type=simple
+WorkingDirectory=/usr/app/tinynamed
+ExecStart=/usr/share/dotnet/dotnet /usr/app/tinynamed/dns.net.dll /var/dyndns
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
